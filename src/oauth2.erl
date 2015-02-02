@@ -6,7 +6,7 @@
          authorize_code_grant/3,
          authorize_code_grant/4,
          implicit_grant/4,
-         client_credential_grant/2,
+         authorize_client_credentials/2,
          issue_code/1,
          issue_token/1,
          issue_token_and_refresh/1,
@@ -154,8 +154,8 @@ implicit_grant({ClientID, _} = Client, RedirectURI, User, Scope) ->
       {error, unauthorized_client}
   end.
 
--spec client_credential_grant(client(), scope()) -> {ok, auth()} | {error, any()}.
-client_credential_grant({ClientID, _} = Client, Scope) ->
+-spec authorize_client_credentials(client(), scope()) -> {ok, auth()} | {error, any()}.
+authorize_client_credentials({ClientID, _} = Client, Scope) ->
   case ?BACKEND:authenticate_client(Client, <<>>) of
     {ok, _} ->
       case ?BACKEND:verify_client_scope(ClientID, Scope) of

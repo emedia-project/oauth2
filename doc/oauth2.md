@@ -220,12 +220,23 @@ user_password() = binary()
 ## Function Index ##
 
 
-<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#authorize_code_grant-3">authorize_code_grant/3</a></td><td></td></tr><tr><td valign="top"><a href="#authorize_code_grant-4">authorize_code_grant/4</a></td><td></td></tr><tr><td valign="top"><a href="#authorize_code_request-4">authorize_code_request/4</a></td><td></td></tr><tr><td valign="top"><a href="#authorize_code_request-5">authorize_code_request/5</a></td><td></td></tr><tr><td valign="top"><a href="#client_credential_grant-2">client_credential_grant/2</a></td><td></td></tr><tr><td valign="top"><a href="#implicit_grant-4">implicit_grant/4</a></td><td></td></tr><tr><td valign="top"><a href="#issue_code-1">issue_code/1</a></td><td></td></tr><tr><td valign="top"><a href="#issue_token-1">issue_token/1</a></td><td></td></tr><tr><td valign="top"><a href="#issue_token_and_refresh-1">issue_token_and_refresh/1</a></td><td></td></tr><tr><td valign="top"><a href="#refresh_access_token-3">refresh_access_token/3</a></td><td></td></tr><tr><td valign="top"><a href="#verify_access_token-1">verify_access_token/1</a></td><td></td></tr><tr><td valign="top"><a href="#verify_refresh_token-1">verify_refresh_token/1</a></td><td></td></tr></table>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#authorize_client_credentials-2">authorize_client_credentials/2</a></td><td></td></tr><tr><td valign="top"><a href="#authorize_code_grant-3">authorize_code_grant/3</a></td><td></td></tr><tr><td valign="top"><a href="#authorize_code_grant-4">authorize_code_grant/4</a></td><td></td></tr><tr><td valign="top"><a href="#authorize_code_request-4">authorize_code_request/4</a></td><td></td></tr><tr><td valign="top"><a href="#authorize_code_request-5">authorize_code_request/5</a></td><td></td></tr><tr><td valign="top"><a href="#implicit_grant-4">implicit_grant/4</a></td><td></td></tr><tr><td valign="top"><a href="#issue_code-1">issue_code/1</a></td><td></td></tr><tr><td valign="top"><a href="#issue_token-1">issue_token/1</a></td><td></td></tr><tr><td valign="top"><a href="#issue_token_and_refresh-1">issue_token_and_refresh/1</a></td><td></td></tr><tr><td valign="top"><a href="#refresh_access_token-3">refresh_access_token/3</a></td><td></td></tr><tr><td valign="top"><a href="#verify_access_token-1">verify_access_token/1</a></td><td></td></tr><tr><td valign="top"><a href="#verify_refresh_token-1">verify_refresh_token/1</a></td><td></td></tr></table>
 
 
 <a name="functions"></a>
 
 ## Function Details ##
+
+<a name="authorize_client_credentials-2"></a>
+
+### authorize_client_credentials/2 ###
+
+
+<pre><code>
+authorize_client_credentials(Client::<a href="#type-client">client()</a>, Scope::<a href="#type-scope">scope()</a>) -&gt; {ok, <a href="#type-auth">auth()</a>} | {error, any()}
+</code></pre>
+<br />
+
 
 <a name="authorize_code_grant-3"></a>
 
@@ -267,17 +278,6 @@ authorize_code_request(ClientID::<a href="#type-client_id">client_id()</a>, Redi
 
 <pre><code>
 authorize_code_request(ClientID::<a href="#type-client_id">client_id()</a>, RedirectURI::<a href="#type-redirect_uri">redirect_uri()</a>, User::<a href="#type-user">user()</a>, Scope::<a href="#type-scope">scope()</a>, State::<a href="#type-state">state()</a>) -&gt; {ok, <a href="#type-auth">auth()</a>} | {error, any()}
-</code></pre>
-<br />
-
-
-<a name="client_credential_grant-2"></a>
-
-### client_credential_grant/2 ###
-
-
-<pre><code>
-client_credential_grant(Client::<a href="#type-client">client()</a>, Scope::<a href="#type-scope">scope()</a>) -&gt; {ok, <a href="#type-auth">auth()</a>} | {error, any()}
 </code></pre>
 <br />
 
@@ -343,7 +343,7 @@ refresh_access_token(Token::<a href="#type-token">token()</a>, RefreshToken::<a 
 
 
 <pre><code>
-verify_access_token(Token::<a href="#type-token">token()</a>) -&gt; {ok, {user, <a href="#type-user_login">user_login()</a>} | {client, <a href="#type-client_info">client_info()</a>}} | {error, any()}
+verify_access_token(Token::<a href="#type-token">token()</a>) -&gt; {ok, <a href="#type-auth">auth()</a>} | {error, any()}
 </code></pre>
 <br />
 
@@ -354,7 +354,7 @@ verify_access_token(Token::<a href="#type-token">token()</a>) -&gt; {ok, {user, 
 
 
 <pre><code>
-verify_refresh_token(Token::<a href="#type-token">token()</a>) -&gt; {ok, {user, <a href="#type-user_login">user_login()</a>} | {client, <a href="#type-client_info">client_info()</a>}} | {error, any()}
+verify_refresh_token(Token::<a href="#type-token">token()</a>) -&gt; {ok, <a href="#type-auth">auth()</a>} | {error, any()}
 </code></pre>
 <br />
 
