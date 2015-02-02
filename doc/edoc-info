@@ -1,0 +1,5 @@
+%% encoding: UTF-8
+{application,oautth2}.
+{packages,[]}.
+{modules,[oauth2,oauth2_backend,oauth2_config,oauth2_token,
+          oauth2_token_generator,oauth2_utils]}.
