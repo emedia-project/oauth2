@@ -218,7 +218,7 @@ issue_token_and_refresh(#{state := State} = Auth) ->
     E -> E
   end.
 
--spec verify_access_token(token()) -> {ok, {user, user_login()} | {client, client_info()}} | {error, any()}.
+-spec verify_access_token(token()) -> {ok, auth()} | {error, any()}.
 verify_access_token(Token) -> 
   case ?BACKEND:verify_access_token(Token) of
     {error, E} ->
@@ -227,7 +227,7 @@ verify_access_token(Token) ->
     OK -> OK
   end.
 
--spec verify_refresh_token(token()) -> {ok, {user, user_login()} | {client, client_info()}} | {error, any()}.
+-spec verify_refresh_token(token()) -> {ok, auth()} | {error, any()}.
 verify_refresh_token(Token) ->
   case ?BACKEND:verify_refresh_token(Token) of
     {error, E} ->
