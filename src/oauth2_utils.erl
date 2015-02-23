@@ -10,7 +10,7 @@ scope_to_list(Scope) when is_list(Scope)->
     true ->
       [eutils:to_binary(X) || X <- string:tokens(Scope, " ")];
     false ->
-      eutils:to_binary(Scope)
+      lists:map(fun eutils:to_binary/1, Scope)
   end;
 scope_to_list(Scope) ->
   scope_to_list(eutils:to_string(Scope)).
